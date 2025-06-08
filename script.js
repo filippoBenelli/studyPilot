@@ -4,21 +4,31 @@ document.addEventListener('DOMContentLoaded', function () {
   const calendar = new FullCalendar.Calendar(calendarEl, {
     initialView: 'dayGridMonth',
     locale: 'it',
+    firstDay: 1,
     headerToolbar: {
       left: 'prev,next today',
       center: 'title',
-      right: 'dayGridMonth,timeGridWeek'
+      right: 'dayGridMonth,timeGridWeek, timeGridDay'
     },
-    events: [
-      // {
-      //   title: 'Studia matematica - 10 pagine',
-      //   start: '2025-06-10'
-      // },
-      // {
-      //   title: 'Ripasso informatica',
-      //   start: '2025-06-11'
-      // }
-    ]
+    events: []
   });
-  calendar.render();
+  calendar.render();   
+  //event listener for adding and removing events
+  calendar.on('dateClick', function(info) {
+    const date = info.dateStr;
+    const eventTitle = prompt('Inserisci il titolo dell\'evento:');
+    if (eventTitle) {
+      calendar.addEvent({
+        title: eventTitle,
+        start: date,
+        allDay: true
+      });
+    }
+  });
+  calendar.on('eventClick', function(info) {
+    const event = info.event;
+    if (confirm(`Vuoi eliminare l'evento "${event.title}"?`)) {
+      event.remove();
+    }
+  });
 });
