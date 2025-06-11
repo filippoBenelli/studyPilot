@@ -2,16 +2,62 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Calendario Studio</title>
-    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css' rel='stylesheet' />
-    <link rel="shortcut icon" href="logo.jpg" type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FullCalendar con Menu Contestuale</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/main.min.css" />
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <h1 id="title">Study Pilot</h1>
-    <div id='calendar'></div>
-    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
-    <script src="script.js"></script>
+
+  <div id="calendar"></div>
+
+  <div id="contextMenu">
+      <h3>Aggiungi Dettagli Studio</h3>
+      <label for="materia">Materia:</label><br/>
+      <input type="text" id="materia" placeholder="Es. Matematica" /><br/><br/>
+
+      <label for="pagina">Pagine totali:</label><br/>
+      <input type="number" id="pagina" min="1" placeholder="Es. 42" /><br/><br/>
+
+      <label for="difficolta">Difficoltà:</label><br/>
+      <select id="difficolta">
+          <option value="1">1 - Facile</option>
+          <option value="2">2 - Media</option>
+          <option value="3">3 - Difficile</option>
+      </select><br/><br/>
+
+      <button id="salvaDettagli">Salva</button>
+      <button id="annullaDettagli" class="cancel">Annulla</button>
+  </div>
+
+  <div id="choiceDialog" class="dialog">
+      <h3>Scegli un'azione per il giorno</h3>
+      <div class="dialog-buttons">
+          <button id="addEventChoice" class="action">Aggiungi Nuovo Evento</button>
+          <button id="markFreeDayChoice" class="action">Marca Giorno Libero</button>
+          <button id="cancelChoice" class="cancel">Annulla</button>
+      </div>
+  </div>
+
+  <div id="confirmDialog" class="dialog">
+      <h3 id="confirmDialogTitle">Conferma Azione</h3>
+      <p id="confirmMessage">Sei sicuro di voler eliminare questo evento?</p>
+      <div class="dialog-buttons">
+          <button id="confirmAction" class="confirm">Conferma</button>
+          <button id="cancelAction" class="cancel">Annulla</button>
+      </div>
+  </div>
+
+  <div id="eventDetailDialog" class="dialog">
+      <h3 id="eventDetailTitle">Dettagli Evento</h3>
+      <div id="eventDetailContent"></div>
+      <div class="dialog-buttons">
+          <button id="closeDetailDialog" class="cancel">Chiudi</button>
+          <button id="deleteEventFromDetail" class="confirm">Elimina Evento</button>
+      </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js"></script>
+  <script src="script.js"></script>
 </body>
-</html
+</html>

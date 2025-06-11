@@ -1,138 +1,303 @@
-/* Stili globali per il corpo della pagina */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Un font più moderno e pulito */
-    margin: 0;
-    margin-top: 1vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f2f5;
     display: flex;
-    flex-direction: column; /* Disposizione verticale */
-    justify-content: center; /* Centra orizzontalmente */
-    align-items: center; /* Centra verticalmente */
-    min-height: 98vh; /* Assicura che il corpo occupi l'intera altezza del viewport */
-    background: linear-gradient(to right, #6a11cb 0%, #2575fc 100%); /* Sfondo sfumato per un look moderno */
-    color: #333; /* Colore del testo predefinito */
+    justify-content: center;
+    align-items: flex-start; /* Align at the top */
+    min-height: 100vh; /* Full viewport height */
+    margin: 0;
+    padding: 20px; /* Add some padding around the calendar */
+    box-sizing: border-box; /* Include padding in element's total width and height */
+    background: linear-gradient(to right, #6a11cb 0%, #2575fc 100%); /* Gradient background */
 }
-#title {
-    font-size: 4rem; /* Dimensione del titolo */
-    font-weight: 700; /* Grassetto per il titolo */
-    margin-bottom: 20px; /* Spazio sotto il titolo */
-    color: #ffffff; /* Colore del titolo bianco per contrasto con lo sfondo */
-}
-/* Stili per il contenitore del calendario */
+
 #calendar {
-    width: 90vw; /* Larghezza del 90% del viewport */
-    max-width: 1200px; /* Limite massimo di larghezza per schermi grandi */
-    height: 90vh; /* Altezza del 90% del viewport */
-    max-height: 800px; /* Limite massimo di altezza */
-    background-color: #ffffff; /* Sfondo bianco per il calendario */
-    border-radius: 15px; /* Angoli arrotondati per il calendario */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Ombra morbida per dare profondità */
-    padding: 20px; /* Padding interno */
-    box-sizing: border-box; /* Include padding e border nella larghezza/altezza */
-    margin-bottom: 3vh;
+    max-width: 900px;
+    width: 100%; /* Make calendar responsive */
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-top: 20px; /* Space from the top */
 }
 
-/* Stili specifici per gli elementi di FullCalendar */
-
-/* Stili per il titolo della barra degli strumenti (es. "giugno 2025") */
-.fc .fc-toolbar-title {
-    color: #333;
-    font-size: 2em;
-    font-weight: 600;
+/* Header di FullCalendar */
+.fc .fc-toolbar.fc-header-toolbar {
+    margin-bottom: 1.5em;
+    font-size: 1.1em;
 }
 
-/* Stili per il gruppo di bottoni (es. "month", "week", "day") */
-.fc .fc-button-group {
-    border-radius: 8px; /* Applica il border-radius al gruppo intero */
-    overflow: hidden; /* Nasconde ciò che eccede i bordi arrotondati del gruppo */
-}
-
-/* Stili per i singoli bottoni di FullCalendar */
-.fc .fc-button {
-    border-radius: 0; /* Rimuove il border-radius dai singoli bottoni all'interno di un gruppo */
-    border-right: 1px solid rgba(255, 255, 255, 0.3); /* Aggiunge un sottile separatore tra i bottoni */
-}
-
-/* Stili per il primo bottone all'interno di un gruppo (es. "month") */
-.fc .fc-button-group .fc-button:first-child {
-    border-top-left-radius: 8px; /* Arrotonda l'angolo in alto a sinistra */
-    border-bottom-left-radius: 8px; /* Arrotonda l'angolo in basso a sinistra */
-}
-
-/* Stili per l'ultimo bottone all'interno di un gruppo (es. "day") */
-.fc .fc-button-group .fc-button:last-child {
-    border-top-right-radius: 8px; /* Arrotonda l'angolo in alto a destra */
-    border-bottom-right-radius: 8px; /* Arrotonda l'angolo in basso a destra */
-    border-right: none; /* Rimuove il bordo destro per l'ultimo bottone */
-}
-
-/* Stili per i bottoni primari (prev, next, today, month, week, day) */
 .fc .fc-button-primary {
-    background-color: #2575fc; /* Colore di sfondo blu */
-    border-color: #2575fc; /* Colore del bordo blu */
-    color: #fff; /* Colore del testo bianco */
-    padding: 8px 15px; /* Padding interno */
-    font-weight: 500;
-    transition: background-color 0.3s ease, border-color 0.3s ease; /* Transizione fluida al passaggio del mouse */
+    background-color: #2575fc;
+    border-color: #2575fc;
+    color: white;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-/* Stili al passaggio del mouse sui bottoni primari */
 .fc .fc-button-primary:hover {
-    background-color: #1a5acb; /* Colore di sfondo blu più scuro al hover */
-    border-color: #1a5acb; /* Colore del bordo blu più scuro al hover */
+    background-color: #1a5acb;
+    border-color: #1a5acb;
 }
 
-/* Stili per i numeri dei giorni nel calendario */
-.fc-daygrid-day-number {
+.fc .fc-button-primary:not(:disabled).fc-button-active {
+    background-color: #1a5acb;
+    border-color: #1a5acb;
+}
+
+/* Giorni della settimana (es. Dom, Lun) */
+.fc .fc-col-header-cell-cushion {
+    padding: 8px 0;
+    font-weight: bold;
     color: #555;
-    font-weight: 500;
+    text-transform: uppercase;
 }
 
-/* Stili per i numeri dei giorni del mese precedente/successivo */
-.fc-day-other .fc-daygrid-day-number {
-    color: #bbb; /* Colore più chiaro per i giorni fuori dal mese corrente */
-}
-
-/* Stili per evidenziare il giorno corrente */
-.fc-daygrid-day.fc-day-today {
-    background-color: #e6f2ff; /* Sfondo azzurro chiaro per il giorno di oggi */
-    border-radius: 5px; /* Angoli leggermente arrotondati */
-}
-
-/* Stili per l'intestazione delle colonne (es. "lun", "mar") */
-.fc-col-header-cell-cushion {
+/* Numeri dei giorni e celle */
+.fc .fc-daygrid-day-number {
+    padding: 8px;
+    font-size: 1.2em;
+    font-weight: bold;
     color: #333;
-    font-weight: 600;
-    padding: 10px 0;
 }
 
-/* Stili per gli eventi nel calendario */
-.fc-event {
-    background-color: #6a11cb; /* Colore di sfondo viola per gli eventi */
-    border-color: #6a11cb; /* Colore del bordo viola per gli eventi */
-    color: #fff; /* Colore del testo bianco */
-    border-radius: 5px; /* Angoli arrotondati per gli eventi */
-    padding: 3px 7px;
-    font-size: 0.85em;
-    font-weight: 500;
-    margin-bottom: 2px;
+/* Celle del calendario */
+.fc .fc-daygrid-day {
+    border: 1px solid #e0e0e0;
 }
 
-/* Stili personalizzati per la barra di scorrimento (scrollbar) */
-::-webkit-scrollbar {
-    width: 8px; /* Larghezza della scrollbar verticale */
-    height: 8px; /* Altezza della scrollbar orizzontale */
+/* Stile per i giorni liberi */
+.fc-day-free-day {
+    background-color: #fce4ec !important; /* Colore rosa chiaro per i giorni liberi */
+    border: 2px dashed #e91e63 !important; /* Bordo tratteggiato per evidenziare */
+    opacity: 0.9; /* Leggermente trasparente per non coprire del tutto */
+}
+/* Aggiusta l'effetto hover se necessario */
+.fc-day-free-day:hover {
+    background-color: #f8bbd0 !important; /* Colore leggermente più scuro all'hover */
 }
 
-::-webkit-scrollbar-track {
-    background: #f1f1f1; /* Sfondo della traccia della scrollbar */
-    border-radius: 10px; /* Angoli arrotondati per la traccia */
+
+/* --- Stili per il menu contestuale (centrato e responsive) --- */
+#contextMenu {
+    display: none; /* Nascosto di default */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    z-index: 1001; /* Sopra il calendario e altri elementi */
+    width: 90%;
+    max-width: 380px;
+    text-align: center;
 }
 
-::-webkit-scrollbar-thumb {
-    background: #888; /* Colore del "pollice" della scrollbar */
-    border-radius: 10px; /* Angoli arrotondati per il "pollice" */
+#contextMenu h3 {
+    margin-top: 0;
+    color: #2575fc;
+    margin-bottom: 20px;
+    font-size: 1.6em;
 }
 
-::-webkit-scrollbar-thumb:hover {
-    background: #555; /* Colore del "pollice" al passaggio del mouse */
+#contextMenu label {
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+    color: #555;
+    font-weight: bold;
+}
+
+#contextMenu input[type="text"],
+#contextMenu input[type="number"],
+#contextMenu select {
+    width: calc(100% - 20px); /* Adjust for padding */
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+#contextMenu button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease;
+    width: 48%; /* Per affiancare Salva e Annulla */
+    margin: 5px 1%;
+}
+
+#contextMenu button#salvaDettagli {
+    background-color: #4CAF50; /* Verde */
+    color: white;
+}
+
+#contextMenu button#salvaDettagli:hover {
+    background-color: #45a049;
+}
+
+#contextMenu button.cancel {
+    background-color: #f44336; /* Rosso */
+    color: white;
+}
+
+#contextMenu button.cancel:hover {
+    background-color: #da190b;
+}
+
+/* --- Stili per i dialoghi generici (usati da confirmDialog, eventDetailDialog, e choiceDialog) --- */
+.dialog {
+    display: none; /* Inizialmente nascosto */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    width: 90%; /* Responsive width */
+    max-width: 400px; /* Max width for larger screens */
+    text-align: center;
+}
+
+.dialog h3 {
+    margin-top: 0;
+    color: #333;
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.dialog-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+    gap: 10px; /* Spazio tra i pulsanti */
+}
+
+.dialog-buttons button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+    flex-grow: 1; /* Permette ai pulsanti di espandersi */
+}
+
+/* Stili per i pulsanti di conferma */
+.dialog-buttons button.confirm {
+    background-color: #f44336; /* Rosso per eliminazione */
+    color: white;
+}
+.dialog-buttons button.confirm:hover {
+    background-color: #d32f2f;
+}
+
+/* Stili per i pulsanti di annulla */
+.dialog-buttons button.cancel {
+    background-color: #9e9e9e;
+    color: white;
+}
+.dialog-buttons button.cancel:hover {
+    background-color: #757575;
+}
+
+/* Stili per i pulsanti di azione generica (es. "Aggiungi Evento", "Marca Giorno Libero") */
+.dialog-buttons button.action {
+    background-color: #2196F3; /* Blu */
+    color: white;
+}
+.dialog-buttons button.action:hover {
+    background-color: #1976D2;
+}
+
+/* Stili specifici per la finestra di conferma */
+#confirmDialog h3 {
+    color: #f44336; 
+}
+
+/* Stili specifici per la finestra di visualizzazione dettagli */
+#eventDetailDialog h3 {
+    color: #2575fc;
+}
+#eventDetailContent {
+    text-align: left;
+    line-height: 1.6;
+    color: #444;
+}
+#eventDetailContent p {
+    margin-bottom: 8px;
+}
+#eventDetailContent p strong {
+    color: #333;
+}
+
+/* --- MEDIA QUERIES per schermi più piccoli --- */
+@media (max-width: 768px) {
+    #calendar {
+        padding: 10px;
+    }
+    .fc .fc-toolbar.fc-header-toolbar {
+        flex-direction: column; /* Stack buttons vertically */
+        align-items: center;
+    }
+    .fc .fc-toolbar-chunk {
+        margin-bottom: 10px;
+    }
+    .fc .fc-button-group {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+    }
+    .fc .fc-button {
+        flex-grow: 1;
+    }
+}
+
+@media (max-width: 576px) {
+    body {
+        padding: 10px;
+    }
+    #calendar {
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    .fc .fc-daygrid-day-number {
+        font-size: 1em;
+        padding: 5px;
+    }
+    #contextMenu, .dialog {
+        padding: 15px;
+        border-radius: 8px;
+    }
+    #contextMenu h3, .dialog h3 {
+        font-size: 1.3em;
+        margin-bottom: 15px;
+    }
+    #contextMenu input[type="text"],
+    #contextMenu input[type="number"],
+    #contextMenu select {
+        width: calc(100% - 10px); /* Slightly less padding adjustment */
+        padding: 8px;
+    }
+    #contextMenu button, .dialog-buttons button {
+        font-size: 0.9em;
+        padding: 10px;
+    }
+    #contextMenu button {
+        width: 100%;
+        margin: 5px 0;
+    }
+    .dialog-buttons {
+        flex-direction: column; /* Impila i pulsanti verticalmente su schermi piccoli */
+    }
+    .dialog-buttons button {
+        width: 100%; /* I pulsanti occupano tutta la larghezza */
+    }
 }
